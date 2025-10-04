@@ -5,7 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace gameProgCombatSimChall_ChrisFrench0259182_250928
-{
+{   // references for code
+    // google search for "code a random to pull a number then discard it from the next random in c#"
+    // google search for "how to reference a value in an array to change it in c#"
+    // old assignment code from  myself for this course
+    // notes from class
     internal class Program
     {
         //Variables here
@@ -16,42 +20,57 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
         static int health = 100;   // Player Health
         static string[] weapon = { "fist", "pistol", "rifle", "gernade" };
         static int[] Dmg = { 5, 15, 50, 100 };
-        static Random random = new Random();
+      
         
         static string Character; // initalizes  variable
         //static string wepType = "big stick"; // initalizes  variable
         static string hStat = "Catch Phrase!";
-       
+        static int ESmin = 1;
+        static int ESmax = 4; 
         static void Main(string[] args)
         {
-           int selectEnemy = random.Next(1, 5);
 
-            if (int selectEnemy = 1) 
+            List<int> enemyChoices = new List<int>();
+            for (int i = ESmin; i <= ESmax; i++)
             {
-                enemyChar[0];
-                int enemyHealth[0];
+                enemyChoices.Add(i);
             }
-            else if (int selectEnemy = 2) 
+            Random random = new Random();
+           
+            while (enemyChoices.Count > 0)   // Loop to pull and discard numbers
+            {
+               int randomIndex = random.Next(0, enemyChoices.Count);  // Generate a random index within the bounds of the current list
+               int chosenNumber = enemyChoices[randomIndex];   // Get the number at the random index
+               
+                //int selectEnemy = random.Next(1, 5);
+
+            if (enemyChoices = 1) 
+            {
+                enemyChar = [ "Evil Larry"];
+                enemyHealth = [0];
+            }
+            else if (enemyChoices = 2) 
             {
                 enemyChar[1];
                 int enemyHealth[1];
             }
-            else if (int selectEnemy = 3) 
+            else if (enemyChoices = 3) 
             {
                 enemyChar[2];
                 int enemyHealth[2];
             }
-            else if (int selectEnemy = 4) 
+            else if (enemyChoices = 4) 
             {
                 enemyChar[3];
                 int enemyHealth[3];
             }
+
         }
 
 
 
 
-        eLifeChk();
+       // eLifeChk();
 
 
 
