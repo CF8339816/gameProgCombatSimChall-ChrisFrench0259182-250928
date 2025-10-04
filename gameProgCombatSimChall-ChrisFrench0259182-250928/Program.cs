@@ -26,7 +26,7 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
         static int enHealth; // enemy health ref for combat to be populated  randomly
         static string eWeapon; // enemy weapon ref for combat to be populated  randomly
         static int eWepDmg; // enemy weapon damage ref for combat to be populated  randomly
-;       static string Character; // initalizes  variable
+        static string Character; // initalizes  variable
         
         static string hStat;
         static int ESmin = 1;//sets min rangefor enemy select list
