@@ -14,14 +14,14 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
     {
         //Variables here
 
-        static string[] enemyChar = {"Evil Larry", "Evil Barry", "Evil Gary", "Evil Kerry" };
+        static string[] enemyChar = {"Evil Larry", "Evil Barry", "Evil Gary", "Evil Kerry" };// enemy  names
         static int[] enemyHealth = { 100, 125, 90, 200 };  // Enemy health
         
         static int health = 100;   // Player Health
         static string pWeapon;
         static int pWepDmg;
-        static string[] weapon = { "fist", "pistol", "rifle", "gernade" };
-        static int[] Dmg = { 5, 15, 50, 100 };
+        static string[] weapon = { "fist", "pistol", "rifle", "gernade" }; //sets weapin choice 
+        static int[] Dmg = { 5, 15, 50, 100 }; //sets weapon damage 
         static string enemy; // enemy ref for combat to be populated  randomly
         static int enHealth; // enemy health ref for combat to be populated  randomly
         static string eWeapon; // enemy weapon ref for combat to be populated  randomly
@@ -37,18 +37,71 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.WriteLine("What is your character's name");
+            Console.WriteLine("What is your character's name");  //prompts for name entry for  stat block  hud
             Console.ForegroundColor = ConsoleColor.Blue;
             Character = Console.ReadLine();
 
             Console.Clear();
+           
+            //list for pulling and discarding random numbers to randomize the orderof enemies without  repeating
+        List<int> enemyChoices = new List<int>();
+        for (int i = ESmin; i <= ESmax; i++)
+        {
+            enemyChoices.Add(i);
+        }
+        Random random = new Random();
 
-
-            statsBlock();
-            RandomEnemy();
-
-           while (health >= 0 && enHealth >= 0)  //creates  combat loop
+        while (enemyChoices.Count > 0)   // Loop to pull and discard numbers
+        {
+           int randomIndex = random.Next(0, enemyChoices.Count);  // Generate a random index within the bounds of the current list
+        int assignedEnemy = enemyChoices[randomIndex];   // Get the number at the random index
+         /*
+            Random random = new Random();
+            int assignedEnemy = random.Next(1, 5);
+        */
+            if (assignedEnemy == 1)
             {
+                enemy = enemyChar[0];
+                enHealth = enemyHealth[0];
+                eWeapon = weapon[0];
+                eWepDmg = Dmg[0];
+            }
+            else if (assignedEnemy == 2)
+            {
+                enemy = enemyChar[1];
+                enHealth = enemyHealth[1];
+                eWeapon = weapon[1];
+                eWepDmg = Dmg[1];
+            }
+            else if (assignedEnemy == 3)
+            {
+                enemy = enemyChar[20];
+                enHealth = enemyHealth[2];
+                eWeapon = weapon[2];
+                eWepDmg = Dmg[2];
+            }
+            else if (assignedEnemy == 4)
+            {
+                enemy = enemyChar[3];
+                enHealth = enemyHealth[3];
+                eWeapon = weapon[3];
+                eWepDmg = Dmg[3];
+            }
+            else
+            {
+                Console.WriteLine("You do not encounter any enemies. \n"); //else statement to  ensure no errors.
+            }
+        
+
+             statsBlock();
+           //RandomEnemy();
+
+          // while (health >= 0 && enHealth >= 0)  //creates  combat loop
+            {
+                Console.Clear();
+                HUD();
+                Console.WriteLine(" You  stock up your ammo and head off to go on patrol... \n");
+                Console.ReadKey(true);
                 Console.Clear();
                 HUD();
                 weaponSelector();
@@ -62,7 +115,7 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
 
             }
 
-            Console.WriteLine("B attle weary you head back to base, living tofight another day. \n");
+            Console.WriteLine("Battle weary you head back to base, living tofight another day. \n");
 
 
 
@@ -78,10 +131,10 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
         //methods below here
 
         //meth1
-      
+        /*
         static void  RandomEnemy()
         {
-
+          
         
         List<int> enemyChoices = new List<int>();
             for (int i = ESmin; i <= ESmax; i++)
@@ -94,9 +147,10 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
             {
                int randomIndex = random.Next(0, enemyChoices.Count);  // Generate a random index within the bounds of the current list
             int assignedEnemy = enemyChoices[randomIndex];   // Get the number at the random index
-               
-              
-
+             
+            Random random = new Random();
+            int assignedEnemy = random.Next(1, 5);
+            
             if (assignedEnemy == 1) 
                 {
                 enemy = enemyChar[0];
@@ -129,8 +183,8 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
                 {
                     Console.WriteLine("You do not encounter any enemies. \n"); //else statement to  ensure no errors.
                 }
-            }
-        }
+            }*/
+         }
 
     
 
@@ -215,11 +269,12 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
             Console.Write("Name : ");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine($"{Character}" + "\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("{0,0}{1,15}{2,12}", "life", "condition", "weapon");
-
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("{0,2}", health);
-            Console.Write("{0,17}", hStat);
-            Console.WriteLine("{0,15}", weapon[0] + "\n");
+            Console.Write("{0,19}", hStat);
+            Console.WriteLine("{0,9}", weapon[0] + "\n");
 
             //Console.WriteLine("{0,2}{1,13}{2,14}", health, hStat, wepType + "\n");
         }
