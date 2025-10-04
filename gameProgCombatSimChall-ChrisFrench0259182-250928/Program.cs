@@ -93,32 +93,32 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
             while (enemyChoices.Count > 0)   // Loop to pull and discard numbers
             {
                int randomIndex = random.Next(0, enemyChoices.Count);  // Generate a random index within the bounds of the current list
-            int chosenNumber = enemyChoices[randomIndex];   // Get the number at the random index
+            int assignedEnemy = enemyChoices[randomIndex];   // Get the number at the random index
                
               
 
-            if (enemyChoices = 1) 
+            if (assignedEnemy == 1) 
                 {
                 enemy = enemyChar[0];
                 enHealth = enemyHealth[0];
                 eWeapon = weapon[0];
                 eWepDmg = Dmg[0];
                 }
-                else if (enemyChoices = 2)
+                else if (assignedEnemy == 2)
                 {
                     enemy = enemyChar[1];
                     enHealth = enemyHealth[1];
                     eWeapon = weapon[1];
                     eWepDmg = Dmg[1];
                 }
-                else if (enemyChoices = 3)
+                else if (assignedEnemy == 3)
                 {
                     enemy = enemyChar[20];
                     enHealth = enemyHealth[2];
                     eWeapon = weapon[2];
                     eWepDmg = Dmg[2];
                 }
-                else if (enemyChoices = 4)
+                else if (assignedEnemy == 4)
                 {
                     enemy = enemyChar[3];
                     enHealth = enemyHealth[3];
