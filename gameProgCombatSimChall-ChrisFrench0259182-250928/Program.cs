@@ -164,7 +164,9 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
                 if (enHealth > 0)
                 {
                     Console.WriteLine($"Your enemy yet lives, your task is not yet complete. " + "\n " + "\n ");
-                     enemyAttack();
+                   //
+                    
+                    enemyAttack();
 
                 }
                 else 
@@ -187,13 +189,15 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
         //meth3
         static void pLifeChk()
         {
-            bool isPLayerDead = true; //  check to see if player is dead
+            bool isPLayerDead = false; //  check to see if player is dead
 
             while (!isPLayerDead)   //while player is  not dead this will continue player attack in loop
             {
                 if (health > 0)
                 {
                     Console.WriteLine("Your enemy knows you are still alive, they smell your fear... your self doubt.\n They know their task is not yet complete. " + "\n " + "\n ");
+                   //
+                    
                     weaponSelector();
 
                 }
@@ -296,7 +300,11 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
                      pWeapon = weapon[0];  //modify weapon value based on user input  to  weaponSelect.
                     Console.WriteLine($"You Fist the enemy for {Dmg[0]} damage. ");
                     enHealth = enHealth - Dmg[0];//applies array slot 0 damage to the enemy health for selected enemy
+                   //
+                    
                     Console.ReadKey(true);
+                    Console.Clear();
+                    HUD();
                     eLifeChk();
                 }
                 else if (weaponSelect == "1")
@@ -305,7 +313,11 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
                     pWeapon =  weapon[1];  //modify weapon value based on user input  to  weaponSelect.
                     Console.WriteLine($"You Pewww the enemy for {Dmg[1]} damage. ");
                     enHealth = enHealth - Dmg[1];//applies array slot 1 damage to the enemy health for selected enemy
+                   //
+                    
                     Console.ReadKey(true);
+                    Console.Clear();
+                    HUD();
                     eLifeChk();
                 }
                 else if (weaponSelect == "2")
@@ -314,7 +326,11 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
                     pWeapon = weapon[2];  //modify weapon value based on user input  to  weaponSelect.
                     Console.WriteLine($"You Bang the enemy for {Dmg[2]} damage. ");
                     enHealth = enHealth - Dmg[2];//applies array slot 2 damage to the enemy health for selected enemy
+                    //
+                    
                     Console.ReadKey(true);
+                    Console.Clear();
+                    HUD();
                     eLifeChk();
                 }
             
@@ -325,7 +341,11 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
                     pWeapon = weapon[3];  //modify weapon value based on user input  to  weaponSelect.
                     Console.WriteLine($"You KaBOOM the enemy for {gernadeDmg2} damage. ");
                     enHealth = enHealth - gernadeDmg2; //applies array slot 3 damage to the enemy health for selected enemy
+                    //
+                    
                     Console.ReadKey(true);
+                    Console.Clear();
+                    HUD();
                     eLifeChk();
                 }
                 else
@@ -334,7 +354,11 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
                     pWeapon = weapon[0];  //modify weapon value based on user input  to  weaponSelect.
                     Console.WriteLine($"You Flail at the enemy for {Dmg[0]} damage. ");
                     enHealth = enHealth - Dmg[0]; //defaults  weapon choice for any other  choice to fist
+                    //
+                    
                     Console.ReadKey(true);
+                    Console.Clear();
+                    HUD();
                     eLifeChk();
                 }
 
@@ -349,7 +373,11 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
 
             Console.WriteLine($"{enemy} attacks you  with {eWeapon} doing {eWepDmg}... \n");
             health = health - eWepDmg;//applies approperate weapon damage to player based on enemy build
+           //
+            
             Console.ReadKey(true);
+            Console.Clear();
+            HUD();
             pLifeChk();
 
         }
