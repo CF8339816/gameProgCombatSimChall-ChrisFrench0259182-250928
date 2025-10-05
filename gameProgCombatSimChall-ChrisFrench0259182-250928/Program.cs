@@ -29,7 +29,6 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
         static string eWeapon; // enemy weapon ref for combat to be populated  randomly
         static int eWepDmg; // enemy weapon damage ref for combat to be populated  randomly
         static string Character; // initalizes  variable
-        static int gernadeDmg; 
         static string hStat;
         static int ESmin = 1;//sets min rangefor enemy select list
         static int ESmax = 4; //sets max range for  enemy  select list 
@@ -47,6 +46,7 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
             Character = Console.ReadLine();
 
             Console.Clear();
+          
 
             //list for pulling and discarding random numbers to randomize the orderof enemies without  repeating
             List<int> enemyChoices = new List<int>();
@@ -98,27 +98,30 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
 
 
                 statsBlock();
-                //RandomEnemy();
+                Console.ReadKey(true);
+                Console.WriteLine(" You  stock up your ammo and head off to go on patrol... \n");
+                Console.ReadKey(true);
+                Console.Clear();
 
-                while (health >= 0 && enHealth >= 0)  //creates  combat loop
-                {
+                //while (health > 0 && enHealth > 0)  //creates  combat loop
+               // {
                     Console.Clear();
                     HUD();
-                    Console.WriteLine(" You  stock up your ammo and head off to go on patrol... \n");
-                    Console.ReadKey(true);
-                    Console.Clear();
-                    HUD();
+                   
+                    
+                    
+                  
                     weaponSelector();
                     Console.ReadKey(true);
-                    eLifeChk();
-                    Console.ReadKey(true);
-                    enemyAttack();
-                    Console.ReadKey(true);
-                    pLifeChk();
-                    Console.ReadKey(true);
+                   //eLifeChk();
+                   // Console.ReadKey(true);
+                   // enemyAttack();
+                  //  Console.ReadKey(true);
+                   // pLifeChk();
+                    //Console.ReadKey(true);
 
 
-                }
+               // }
 
                 Console.WriteLine("Battle weary you head back to base, living tofight another day. \n");
 
@@ -137,62 +140,18 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
         //methods below here
 
         //meth1
-        /*
-        static void  RandomEnemy()
+/*
+        static void ammo(string weaponName)
         {
-          
-        
-        List<int> enemyChoices = new List<int>();
-            for (int i = ESmin; i <= ESmax; i++)
-            {
-                enemyChoices.Add(i);
-            }
-            Random random = new Random();
-           
-            while (enemyChoices.Count > 0)   // Loop to pull and discard numbers
-            {
-               int randomIndex = random.Next(0, enemyChoices.Count);  // Generate a random index within the bounds of the current list
-            int assignedEnemy = enemyChoices[randomIndex];   // Get the number at the random index
-             
-            Random random = new Random();
-            int assignedEnemy = random.Next(1, 5);
-            
-            if (assignedEnemy == 1) 
-                {
-                enemy = enemyChar[0];
-                enHealth = enemyHealth[0];
-                eWeapon = weapon[0];
-                eWepDmg = Dmg[0];
-                }
-                else if (assignedEnemy == 2)
-                {
-                    enemy = enemyChar[1];
-                    enHealth = enemyHealth[1];
-                    eWeapon = weapon[1];
-                    eWepDmg = Dmg[1];
-                }
-                else if (assignedEnemy == 3)
-                {
-                    enemy = enemyChar[20];
-                    enHealth = enemyHealth[2];
-                    eWeapon = weapon[2];
-                    eWepDmg = Dmg[2];
-                }
-                else if (assignedEnemy == 4)
-                {
-                    enemy = enemyChar[3];
-                    enHealth = enemyHealth[3];
-                    eWeapon = weapon[3];
-                    eWepDmg = Dmg[3];
-                }
-                else
-                {
-                    Console.WriteLine("You do not encounter any enemies. \n"); //else statement to  ensure no errors.
-                }
-            }*/
-        
+            int ammo = Array.IndexOf(weaponTypes, weaponName);
 
-    
+           
+            ammoCount[1] = ammoCount[1] - fireRate[1];
+            ammoCount[2] = ammoCount[2] - fireRate[2];
+            ammoCount[3] = ammoCount[3] - fireRate[3];
+
+        }
+        */
 
         //meth2
 
@@ -202,16 +161,22 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
 
             while (!isEnemyDead)   //while enemy is  not dead this will continue player attack in loop
             {
-                if (enHealth >= 0)
+                if (enHealth > 0)
                 {
                     Console.WriteLine($"Your enemy yet lives, your task is not yet complete. " + "\n " + "\n ");
-                    weaponSelector();
-                    
+                     enemyAttack();
+
                 }
-                else
+                else 
                 {
-                    Console.WriteLine("you have slain your enemy. You can rest easy until your next inevitable combat." + "\n");
-                   
+                    Console.WriteLine("You have slain your enemy. You can rest easy until your next inevitable combat." + "\n");
+                    Console.WriteLine("You recover 5 Pistol rounds and 2 rifle rounds. you also recover 3 rations, eating them recovers 15 health" + "\n");
+                    ammoCount[1] = ammoCount[1] + 5;
+                    ammoCount[2] = ammoCount[2] + 3;
+                    health = health + 15;    
+
+
+
                     break; // breaks the combat loop on player death 
 
                 }
@@ -222,21 +187,21 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
         //meth3
         static void pLifeChk()
         {
-            bool isPLayerDead = false; //  check to see if player is dead
+            bool isPLayerDead = true; //  check to see if player is dead
 
             while (!isPLayerDead)   //while player is  not dead this will continue player attack in loop
             {
-                if (health >= 0)
+                if (health > 0)
                 {
                     Console.WriteLine("Your enemy knows you are still alive, they smell your fear... your self doubt.\n They know their task is not yet complete. " + "\n " + "\n ");
-                    enemyAttack();
-                   
+                    weaponSelector();
+
                 }
                 else
                 {
                     Console.WriteLine($"You have been slain by your enemy. \n You got {Kills} kills before  you  were  taken  out.  \n You can rest in Vahalla until Odin tires  of your weakness.\n");
                     
-                    break; // breaks the combat loop on enemy death
+                  break; // breaks the combat loop on enemy death
 
                 }
 
@@ -276,12 +241,12 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine($"{Character}" + "\n");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("{0,0}{1,15}{2,12}", "life", "condition", "weapon");
+            Console.WriteLine("{0,0}{1,17}{2,17}", "life", "condition", "weapon");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("{0,2}", health);
-            Console.Write("{0,19}", hStat);
-            Console.WriteLine("{0,9}", weapon[0] + "\n");
-
+            Console.Write("{0,23}", hStat);
+            Console.WriteLine("{0,12}", weapon[0] + "\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             //Console.WriteLine("{0,2}{1,13}{2,14}", health, hStat, wepType + "\n");
         }
 
@@ -292,10 +257,13 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
         static void HUD()
         {
             statsBlock();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write("weapon");
             Console.Write("{0,15 }", "ammo carried");
             Console.WriteLine("{0,16}", "ammo loaded" + "\n");
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(weapon[1]);
+
             Console.Write("{0,11}", ammoCount[1]);
             Console.WriteLine("{0,15}", ammoLoad[1]);
             Console.Write(weapon[2]);
@@ -304,7 +272,12 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
             Console.Write(weapon[3]);
             Console.Write("{0,10}", ammoCount[3]);
             Console.WriteLine("{0,15}", ammoLoad[3]);
-
+            Console.WriteLine("\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write("Enemy encountered : ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"{enemy}" + "\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
         }
 
         //meth6
@@ -315,28 +288,34 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
             Console.WriteLine(" Please choose a weapon: 0 = Fist, 1 = Pistol, 2 = Sniper Rifle, 3 = Gernade" + "\n");
 
             string weaponSelect = Console.ReadLine(); //store  weapon  selection
-           // if (int.TryParse(weaponSelect, out weaponSelect))
+         
             {
                 if (weaponSelect == "0")
                 {
                     Console.WriteLine("You choose to attack your enemy with your Bare Hands. " + "\n");
                      pWeapon = weapon[0];  //modify weapon value based on user input  to  weaponSelect.
                     Console.WriteLine($"You Fist the enemy for {Dmg[0]} damage. ");
-                    enHealth = -Dmg[0];//applies array slot 0 damage to the enemy health for selected enemy
+                    enHealth = enHealth - Dmg[0];//applies array slot 0 damage to the enemy health for selected enemy
+                    Console.ReadKey(true);
+                    eLifeChk();
                 }
                 else if (weaponSelect == "1")
                 {
                     Console.WriteLine("You choose to attack your enemy with your trusty Pistol. " + "\n");
                     pWeapon =  weapon[1];  //modify weapon value based on user input  to  weaponSelect.
                     Console.WriteLine($"You Pewww the enemy for {Dmg[1]} damage. ");
-                    enHealth = -Dmg[1];//applies array slot 1 damage to the enemy health for selected enemy
+                    enHealth = enHealth - Dmg[1];//applies array slot 1 damage to the enemy health for selected enemy
+                    Console.ReadKey(true);
+                    eLifeChk();
                 }
                 else if (weaponSelect == "2")
                 {
                     Console.WriteLine("You choose to attack your enemy with a sleek andd stylish Sniper Rifle. Woot Headshot! " + "\n");
                     pWeapon = weapon[2];  //modify weapon value based on user input  to  weaponSelect.
                     Console.WriteLine($"You Bang the enemy for {Dmg[2]} damage. ");
-                    enHealth = -Dmg[2];//applies array slot 2 damage to the enemy health for selected enemy
+                    enHealth = enHealth - Dmg[2];//applies array slot 2 damage to the enemy health for selected enemy
+                    Console.ReadKey(true);
+                    eLifeChk();
                 }
             
             
@@ -345,14 +324,18 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
                     Console.WriteLine("You choose to attack your enemy with a FRIKKIN Gernade... Overkill much? " + "\n");
                     pWeapon = weapon[3];  //modify weapon value based on user input  to  weaponSelect.
                     Console.WriteLine($"You KaBOOM the enemy for {gernadeDmg2} damage. ");
-                    enHealth = -gernadeDmg2; //applies array slot 3 damage to the enemy health for selected enemy
+                    enHealth = enHealth - gernadeDmg2; //applies array slot 3 damage to the enemy health for selected enemy
+                    Console.ReadKey(true);
+                    eLifeChk();
                 }
                 else
                 {
                     Console.WriteLine("You did not have room to take that weapon with you it is at home in your footlocker." + "\n");
                     pWeapon = weapon[0];  //modify weapon value based on user input  to  weaponSelect.
                     Console.WriteLine($"You Flail at the enemy for {Dmg[0]} damage. ");
-                    enHealth = -Dmg[0]; //defaults  weapon choice for any other  choice to fist
+                    enHealth = enHealth - Dmg[0]; //defaults  weapon choice for any other  choice to fist
+                    Console.ReadKey(true);
+                    eLifeChk();
                 }
 
             }
@@ -365,7 +348,10 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
 
 
             Console.WriteLine($"{enemy} attacks you  with {eWeapon} doing {eWepDmg}... \n");
-            health = -eWepDmg;//applies approperate weapon damage to player based on enemy build
+            health = health - eWepDmg;//applies approperate weapon damage to player based on enemy build
+            Console.ReadKey(true);
+            pLifeChk();
+
         }
 
     }
