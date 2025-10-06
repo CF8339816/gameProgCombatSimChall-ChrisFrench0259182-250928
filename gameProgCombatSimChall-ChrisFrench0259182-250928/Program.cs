@@ -111,77 +111,77 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
                 */
 
 
-                statsBlock();
-                Console.ReadKey(true);
-                Console.WriteLine(" You  stock up your ammo and head off to go on patrol... \n");
-                Console.ReadKey(true);
-                Console.Clear();
+            statsBlock();
+            Console.ReadKey(true);
+            Console.WriteLine(" You  stock up your ammo and head off to go on patrol... \n");
+            Console.ReadKey(true);
+            Console.Clear();
 
-                while (health > 0 )  //creates  combat loop
-                {
+            while (health > 0)  //creates  combat loop
+            {
                 Console.Clear();
                 HUD();
-               // RandEnemy();
+                // RandEnemy();
 
-            List<int> enemyChoices = new List<int>(); // cretes list for enemy selection
-            for (int i = ESmin; i <= ESmax; i++) //sets number of volume and removes prvious choice
-            {
-                enemyChoices.Add(i); // adds the generated int to enemy choices count for selection
-            }
-            Random random = new Random(); //selects a random number from the list
-
-            while (enemyChoices.Count > 0)   // Loop to pull and discard numbers
-            {
-                int randomIndex = random.Next(0, enemyChoices.Count);  // Generate a random index within the bounds of the current list
-                int assignedEnemy = enemyChoices[randomIndex];   // Get the number at the random index
-
-                Random random2 = new Random(); //generates a random value for gernade damage
-                int gernadeDmg = random2.Next(45, 101);// defines the range of gernade camages random can generate from
-
-                if (assignedEnemy == 1)
-                {  //defines enemy 1
-                    enemy = enemyChar[0];
-                    enHealth = enemyHealth[0];
-                    eWeapon = weapon[0];
-                    eWepDmg = Dmg[0];
+                List<int> enemyChoices = new List<int>(); // cretes list for enemy selection
+                for (int i = ESmin; i <= ESmax; i++) //sets number of volume and removes prvious choice
+                {
+                    enemyChoices.Add(i); // adds the generated int to enemy choices count for selection
                 }
-                else if (assignedEnemy == 2)
-                {   //defines enemy 2
-                    enemy = enemyChar[1];
-                    enHealth = enemyHealth[1];
-                    eWeapon = weapon[1];
-                    eWepDmg = Dmg[1];
-                }
-                else if (assignedEnemy == 3)
-                {   //defines enemy 3
-                    enemy = enemyChar[20];
-                    enHealth = enemyHealth[2];
-                    eWeapon = weapon[2];
-                    eWepDmg = Dmg[2];
-                }
-                else if (assignedEnemy == 4)
-                {   //defines enemy 4
-                    enemy = enemyChar[3];
-                    enHealth = enemyHealth[3];
-                    eWeapon = weapon[3];
-                    eWepDmg = gernadeDmg;
-                }
-                else
-                {     //defines no enemy left to select
-                    Console.WriteLine("You do not encounter any enemies. \n"); //else statement to  ensure no errors.
-                }
+                Random random = new Random(); //selects a random number from the list
+
+                while (enemyChoices.Count > 0)   // Loop to pull and discard numbers
+                {
+                    int randomIndex = random.Next(0, enemyChoices.Count);  // Generate a random index within the bounds of the current list
+                    int assignedEnemy = enemyChoices[randomIndex];   // Get the number at the random index
+
+                    Random random2 = new Random(); //generates a random value for gernade damage
+                    int gernadeDmg = random2.Next(45, 101);// defines the range of gernade camages random can generate from
+
+                    if (assignedEnemy == 1)
+                    {  //defines enemy 1
+                        enemy = enemyChar[0];
+                        enHealth = enemyHealth[0];
+                        eWeapon = weapon[0];
+                        eWepDmg = Dmg[0];
+                    }
+                    else if (assignedEnemy == 2)
+                    {   //defines enemy 2
+                        enemy = enemyChar[1];
+                        enHealth = enemyHealth[1];
+                        eWeapon = weapon[1];
+                        eWepDmg = Dmg[1];
+                    }
+                    else if (assignedEnemy == 3)
+                    {   //defines enemy 3
+                        enemy = enemyChar[20];
+                        enHealth = enemyHealth[2];
+                        eWeapon = weapon[2];
+                        eWepDmg = Dmg[2];
+                    }
+                    else if (assignedEnemy == 4)
+                    {   //defines enemy 4
+                        enemy = enemyChar[3];
+                        enHealth = enemyHealth[3];
+                        eWeapon = weapon[3];
+                        eWepDmg = gernadeDmg;
+                    }
+                    else
+                    {     //defines no enemy left to select
+                        Console.WriteLine("You do not encounter any enemies. \n"); //else statement to  ensure no errors.
+                    }
 
 
 
 
-                weaponSelector();
-                Console.ReadKey(true);
-                //eLifeChk();
-                // Console.ReadKey(true);
-                // enemyAttack();
-                //  Console.ReadKey(true);
-                // pLifeChk();
-                //Console.ReadKey(true);
+                    weaponSelector();
+                    Console.ReadKey(true);
+                    //eLifeChk();
+                    // Console.ReadKey(true);
+                    // enemyAttack();
+                    //  Console.ReadKey(true);
+                    // pLifeChk();
+                    //Console.ReadKey(true);
 
 
                 }
@@ -199,6 +199,7 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
 
 
             }
+        }
         
         //methods below here
 
@@ -366,8 +367,7 @@ namespace gameProgCombatSimChall_ChrisFrench0259182_250928
                     Console.WriteLine("You do not encounter any enemies. \n"); //else statement to  ensure no errors.
                 }
                 */
-            }
-        }
+                   
        
         //meth5
         static void HUD()
